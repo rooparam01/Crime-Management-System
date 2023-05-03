@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.masai</groupId>
+  <artifactId>spiffy-table-3415</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>spiffy-table-3415</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+	    <groupId>com.mysql</groupId>
+	    <artifactId>mysql-connector-j</artifactId>
+	    <version>8.0.32</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+	<dependency>
+	    <groupId>org.hibernate.orm</groupId>
+	    <artifactId>hibernate-core</artifactId>
+	    <version>6.2.1.Final</version>
+	</dependency>
+  </dependencies>
+</project>
