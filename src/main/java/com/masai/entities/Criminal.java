@@ -3,6 +3,7 @@ package com.masai.entities;
 import java.sql.Date;
 import java.util.Set;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,13 +14,17 @@ import jakarta.persistence.ManyToMany;
 public class Criminal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int criminal_id;
+	@Column(name = "criminal_id")
+	private int criminalId;
 	private String name;
 	private Date dob;
-	private String Gender;
-	private String identifying_mark;
-	private Date first_arrest_date;
-	private String arrested_from_ps_area;
+	private String gender;
+	@Column(name = "identifying_mark")
+	private String identifyingMark;
+	@Column(name = "first_arrest_date")
+	private Date firstArrestDate;
+	@Column(name = "arrested_from_ps_area")
+	private String arrestedFromPsArea;
 	
 	@ManyToMany(mappedBy = "criminals")
 	private Set<Crime> crimes;
@@ -29,24 +34,24 @@ public class Criminal {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Criminal(String name, Date dob, String gender, String identifying_mark, Date first_arrest_date,
-			String arrested_from_ps_area, Set<Crime> crimes) {
+	public Criminal(String name, Date dob, String gender, String identifyingMark, Date firstArrestDate,
+			String arrestedFromPsArea, Set<Crime> crimes) {
 		super();
 		this.name = name;
 		this.dob = dob;
-		Gender = gender;
-		this.identifying_mark = identifying_mark;
-		this.first_arrest_date = first_arrest_date;
-		this.arrested_from_ps_area = arrested_from_ps_area;
+		this.gender = gender;
+		this.identifyingMark = identifyingMark;
+		this.firstArrestDate = firstArrestDate;
+		this.arrestedFromPsArea = arrestedFromPsArea;
 		this.crimes = crimes;
 	}
 
-	public int getCriminal_id() {
-		return criminal_id;
+	public int getCriminalId() {
+		return criminalId;
 	}
 
-	public void setCriminal_id(int criminal_id) {
-		this.criminal_id = criminal_id;
+	public void setCriminalId(int criminalId) {
+		this.criminalId = criminalId;
 	}
 
 	public String getName() {
@@ -66,35 +71,35 @@ public class Criminal {
 	}
 
 	public String getGender() {
-		return Gender;
+		return gender;
 	}
 
 	public void setGender(String gender) {
-		Gender = gender;
+		this.gender = gender;
 	}
 
-	public String getIdentifying_mark() {
-		return identifying_mark;
+	public String getIdentifyingMark() {
+		return identifyingMark;
 	}
 
-	public void setIdentifying_mark(String identifying_mark) {
-		this.identifying_mark = identifying_mark;
+	public void setIdentifyingMark(String identifyingMark) {
+		this.identifyingMark = identifyingMark;
 	}
 
-	public Date getFirst_arrest_date() {
-		return first_arrest_date;
+	public Date getFirstArrestDate() {
+		return firstArrestDate;
 	}
 
-	public void setFirst_arrest_date(Date first_arrest_date) {
-		this.first_arrest_date = first_arrest_date;
+	public void setFirstArrestDate(Date firstArrestDate) {
+		this.firstArrestDate = firstArrestDate;
 	}
 
-	public String getArrested_from_ps_area() {
-		return arrested_from_ps_area;
+	public String getArrestedFromPsArea() {
+		return arrestedFromPsArea;
 	}
 
-	public void setArrested_from_ps_area(String arrested_from_ps_area) {
-		this.arrested_from_ps_area = arrested_from_ps_area;
+	public void setArrestedFromPsArea(String arrestedFromPsArea) {
+		this.arrestedFromPsArea = arrestedFromPsArea;
 	}
 
 	public Set<Crime> getCrimes() {
@@ -107,11 +112,73 @@ public class Criminal {
 
 	@Override
 	public String toString() {
-		return "Criminal [criminal_id=" + criminal_id + ", name=" + name + ", dob=" + dob + ", Gender=" + Gender
-				+ ", identifying_mark=" + identifying_mark + ", first_arrest_date=" + first_arrest_date
-				+ ", arrested_from_ps_area=" + arrested_from_ps_area + ", crimes=" + crimes + "]";
+		return "Criminal [criminalId=" + criminalId + ", name=" + name + ", dob=" + dob + ", gender=" + gender
+				+ ", identifyingMark=" + identifyingMark + ", firstArrestDate=" + firstArrestDate
+				+ ", arrestedFromPsArea=" + arrestedFromPsArea + ", crimes=" + crimes + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((arrestedFromPsArea == null) ? 0 : arrestedFromPsArea.hashCode());
+		result = prime * result + ((crimes == null) ? 0 : crimes.hashCode());
+		result = prime * result + criminalId;
+		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
+		result = prime * result + ((firstArrestDate == null) ? 0 : firstArrestDate.hashCode());
+		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((identifyingMark == null) ? 0 : identifyingMark.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Criminal other = (Criminal) obj;
+		if (arrestedFromPsArea == null) {
+			if (other.arrestedFromPsArea != null)
+				return false;
+		} else if (!arrestedFromPsArea.equals(other.arrestedFromPsArea))
+			return false;
+		if (crimes == null) {
+			if (other.crimes != null)
+				return false;
+		} else if (!crimes.equals(other.crimes))
+			return false;
+		if (criminalId != other.criminalId)
+			return false;
+		if (dob == null) {
+			if (other.dob != null)
+				return false;
+		} else if (!dob.equals(other.dob))
+			return false;
+		if (firstArrestDate == null) {
+			if (other.firstArrestDate != null)
+				return false;
+		} else if (!firstArrestDate.equals(other.firstArrestDate))
+			return false;
+		if (gender == null) {
+			if (other.gender != null)
+				return false;
+		} else if (!gender.equals(other.gender))
+			return false;
+		if (identifyingMark == null) {
+			if (other.identifyingMark != null)
+				return false;
+		} else if (!identifyingMark.equals(other.identifyingMark))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
 	
-	
-
 }
