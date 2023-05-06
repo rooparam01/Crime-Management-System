@@ -7,6 +7,8 @@ import org.hibernate.annotations.FilterJoinTable;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,39 +16,40 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 @Entity
 public class Crime {
 	//Robbery, Theft, Homicide),
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "crime_id")
 private int crimeId;
 private String type;
 private String description;
-@Column(name = "ps_area",nullable = false)
-private String psArea;
-@Column(nullable = false)
+
 private Date date;
-@Column(name = "name_of_victim")
+
 private String nameOfVictim;
 
 @ManyToMany(cascade = CascadeType.ALL)
-@JoinTable(name = "crime_criminal",joinColumns = {@JoinColumn(referencedColumnName = "crime_id")},inverseJoinColumns = {@JoinColumn(referencedColumnName = "criminal_id")})
+@JoinTable(name = "criminal_crime",joinColumns = {@JoinColumn(referencedColumnName = "crimeId")},inverseJoinColumns = {@JoinColumn(referencedColumnName = "criminalId")})
 private Set<Criminal> criminals;
+
+@ManyToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "psarea_id")
+private PsArea psArea;
 
 public Crime() {
 	super();
-	// TODO Auto-generated constructor stub
 }
 
-public Crime(String type, String description, String psArea, Date date, String nameOfVictim, Set<Criminal> criminals) {
+public Crime(String type, String description, Date date, String nameOfVictim, Set<Criminal> criminals,PsArea psarea) {
 	super();
 	this.type = type;
 	this.description = description;
-	this.psArea = psArea;
 	this.date = date;
 	this.nameOfVictim = nameOfVictim;
 	this.criminals = criminals;
+	this.psArea = psarea;
 }
 
 public int getCrimeId() {
@@ -73,14 +76,6 @@ public void setDescription(String description) {
 	this.description = description;
 }
 
-public String getPsArea() {
-	return psArea;
-}
-
-public void setPsArea(String psArea) {
-	this.psArea = psArea;
-}
-
 public Date getDate() {
 	return date;
 }
@@ -105,10 +100,13 @@ public void setCriminals(Set<Criminal> criminals) {
 	this.criminals = criminals;
 }
 
-@Override
-public String toString() {
-	return "Crime [crimeId=" + crimeId + ", type=" + type + ", description=" + description + ", psArea=" + psArea
-			+ ", date=" + date + ", nameOfVictim=" + nameOfVictim + ", criminals=" + criminals + "]";
+
+public PsArea getPsarea() {
+	return psArea;
+}
+
+public void setPsarea(PsArea psarea) {
+	this.psArea = psarea;
 }
 
 @Override
@@ -167,6 +165,12 @@ public boolean equals(Object obj) {
 	} else if (!type.equals(other.type))
 		return false;
 	return true;
+}
+
+@Override
+public String toString() {
+	return "Crime [crimeId=" + crimeId + ", type=" + type + ", description=" + description + ", date=" + date
+			+ ", nameOfVictim=" + nameOfVictim + ", criminals=" + criminals + ", psarea=" + psArea + "]";
 }
 
 
