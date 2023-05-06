@@ -3,6 +3,7 @@ package com.masai.entities;
 import java.sql.Date;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,19 +15,18 @@ import jakarta.persistence.ManyToMany;
 public class Criminal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "criminal_id")
 	private int criminalId;
 	private String name;
 	private Date dob;
 	private String gender;
-	@Column(name = "identifying_mark")
+	
 	private String identifyingMark;
-	@Column(name = "first_arrest_date")
+	
 	private Date firstArrestDate;
-	@Column(name = "arrested_from_ps_area")
+	
 	private String arrestedFromPsArea;
 	
-	@ManyToMany(mappedBy = "criminals")
+	@ManyToMany(mappedBy = "criminals",cascade = CascadeType.ALL)
 	private Set<Crime> crimes;
 
 	public Criminal() {

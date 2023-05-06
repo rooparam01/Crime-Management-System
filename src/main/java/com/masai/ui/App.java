@@ -2,16 +2,15 @@ package com.masai.ui;
 
 import java.util.Scanner;
 
-/**
- * Hello world!
- *
- */
+import com.masai.dao.EMUtils;
+import com.masai.exception.SomethingWentWrongException;
+
 public class App 
 {
 	static void displayAdminMenu() {
 		System.out.println("1. Add Crime");
-//		System.out.println("2. View All Insurance Companies");
-//		System.out.println("3. Update Insurance Company Details");
+		System.out.println("2. Add Police Station");
+		System.out.println("3. Update Crime Details");
 //		System.out.println("4. Add Insurance Plan");
 //		System.out.println("5. View All Insurance Plan");
 //		System.out.println("6. Update Insurance Plan");
@@ -33,10 +32,10 @@ public class App
     				AdminUI.addCrime(sc);
     				break;
     			case 2:
-    				//AdminUI.viewCompanies();
+    				AdminUI.addPoliceStation(sc);
     				break;
     			case 3:
-    				//AdminUI.updateCompanyDetails(sc);
+    				AdminUI.updateCrimeDetails(sc);
     				break;
     			case 4:
     				//AdminUI.addPlan(sc);
@@ -78,7 +77,7 @@ public class App
 			System.out.println("Invalid Username of Password");
 		}
 	}
-    public static void main( String[] args )
+    public static void main( String[] args ) 
     {
     	Scanner sc = new Scanner(System.in);
     	int choice = 0;

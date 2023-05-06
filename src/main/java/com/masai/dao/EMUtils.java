@@ -9,7 +9,7 @@ static EntityManagerFactory emf;
 static {
 	emf = Persistence.createEntityManagerFactory("crimeUnit");
 }
-static EntityManager getEntityManager(){
+public static EntityManager getEntityManager(){
 	return emf.createEntityManager();
 }
 }
