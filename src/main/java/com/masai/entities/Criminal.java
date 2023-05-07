@@ -1,20 +1,23 @@
 package com.masai.entities;
 
 import java.sql.Date;
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Criminal {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int criminalId;
 	private String name;
 	private Date dob;
@@ -24,9 +27,11 @@ public class Criminal {
 	
 	private Date firstArrestDate;
 	
-	private String arrestedFromPsArea;
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "ps_areaid")
+	private PsArea arrestedFromPsArea;
 	
-	@ManyToMany(mappedBy = "criminals",cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "criminals")
 	private Set<Crime> crimes;
 
 	public Criminal() {
@@ -34,9 +39,10 @@ public class Criminal {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Criminal(String name, Date dob, String gender, String identifyingMark, Date firstArrestDate,
-			String arrestedFromPsArea, Set<Crime> crimes) {
+	public Criminal(int criminalId, String name, Date dob, String gender, String identifyingMark, Date firstArrestDate,
+			PsArea arrestedFromPsArea, Set<Crime> crimes) {
 		super();
+		this.criminalId = criminalId;
 		this.name = name;
 		this.dob = dob;
 		this.gender = gender;
@@ -94,11 +100,11 @@ public class Criminal {
 		this.firstArrestDate = firstArrestDate;
 	}
 
-	public String getArrestedFromPsArea() {
+	public PsArea getArrestedFromPsArea() {
 		return arrestedFromPsArea;
 	}
 
-	public void setArrestedFromPsArea(String arrestedFromPsArea) {
+	public void setArrestedFromPsArea(PsArea arrestedFromPsArea) {
 		this.arrestedFromPsArea = arrestedFromPsArea;
 	}
 
@@ -110,28 +116,7 @@ public class Criminal {
 		this.crimes = crimes;
 	}
 
-	@Override
-	public String toString() {
-		return "Criminal [criminalId=" + criminalId + ", name=" + name + ", dob=" + dob + ", gender=" + gender
-				+ ", identifyingMark=" + identifyingMark + ", firstArrestDate=" + firstArrestDate
-				+ ", arrestedFromPsArea=" + arrestedFromPsArea + ", crimes=" + crimes + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((arrestedFromPsArea == null) ? 0 : arrestedFromPsArea.hashCode());
-		result = prime * result + ((crimes == null) ? 0 : crimes.hashCode());
-		result = prime * result + criminalId;
-		result = prime * result + ((dob == null) ? 0 : dob.hashCode());
-		result = prime * result + ((firstArrestDate == null) ? 0 : firstArrestDate.hashCode());
-		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
-		result = prime * result + ((identifyingMark == null) ? 0 : identifyingMark.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -141,44 +126,21 @@ public class Criminal {
 		if (getClass() != obj.getClass())
 			return false;
 		Criminal other = (Criminal) obj;
-		if (arrestedFromPsArea == null) {
-			if (other.arrestedFromPsArea != null)
-				return false;
-		} else if (!arrestedFromPsArea.equals(other.arrestedFromPsArea))
-			return false;
-		if (crimes == null) {
-			if (other.crimes != null)
-				return false;
-		} else if (!crimes.equals(other.crimes))
-			return false;
-		if (criminalId != other.criminalId)
-			return false;
-		if (dob == null) {
-			if (other.dob != null)
-				return false;
-		} else if (!dob.equals(other.dob))
-			return false;
-		if (firstArrestDate == null) {
-			if (other.firstArrestDate != null)
-				return false;
-		} else if (!firstArrestDate.equals(other.firstArrestDate))
-			return false;
-		if (gender == null) {
-			if (other.gender != null)
-				return false;
-		} else if (!gender.equals(other.gender))
-			return false;
-		if (identifyingMark == null) {
-			if (other.identifyingMark != null)
-				return false;
-		} else if (!identifyingMark.equals(other.identifyingMark))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+		return Objects.equals(arrestedFromPsArea, other.arrestedFromPsArea) && Objects.equals(crimes, other.crimes)
+				&& criminalId == other.criminalId && Objects.equals(dob, other.dob)
+				&& Objects.equals(firstArrestDate, other.firstArrestDate) && Objects.equals(gender, other.gender)
+				&& Objects.equals(identifyingMark, other.identifyingMark) && Objects.equals(name, other.name);
 	}
+
+	@Override
+	public String toString() {
+		return "Criminal [criminalId=" + criminalId + ", name=" + name + ", dob=" + dob + ", gender=" + gender
+				+ ", identifyingMark=" + identifyingMark + ", firstArrestDate=" + firstArrestDate
+				+ ", arrestedFromPsArea=" + arrestedFromPsArea + ", crimes=" + crimes + "]";
+	}
+
+	
+
+	
 	
 }

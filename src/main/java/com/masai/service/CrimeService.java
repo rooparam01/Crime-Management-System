@@ -1,8 +1,11 @@
 package com.masai.service;
 
 import java.sql.Date;
+import java.util.List;
 
 import com.masai.entities.Crime;
+import com.masai.entities.Criminal;
+import com.masai.exception.RecordNotFoundException;
 import com.masai.exception.SomethingWentWrongException;
 
 public interface CrimeService {
@@ -16,5 +19,12 @@ public interface CrimeService {
 	void updateCrimeDate(int id, Date date)throws SomethingWentWrongException;
 
 	void updateCrimeVictim(int id, String victim)throws SomethingWentWrongException;
+	public List<Crime> getAllCrime() throws SomethingWentWrongException;
+
+	void assingCriminal(int crimeid, Criminal criminal) throws SomethingWentWrongException, RecordNotFoundException;
+
+	void removeCriminalFromCrime(Crime crime, Criminal criminal) throws RecordNotFoundException, SomethingWentWrongException;
+
+	void deleteCrimeById(int crimeid) throws SomethingWentWrongException;
 
 }

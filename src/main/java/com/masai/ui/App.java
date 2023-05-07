@@ -11,13 +11,12 @@ public class App
 		System.out.println("1. Add Crime");
 		System.out.println("2. Add Police Station");
 		System.out.println("3. Update Crime Details");
-//		System.out.println("4. Add Insurance Plan");
-//		System.out.println("5. View All Insurance Plan");
-//		System.out.println("6. Update Insurance Plan");
-//		System.out.println("7. Update premium for an age band of a plan");
-//		System.out.println("8. See List of all Customers");
-//		System.out.println("9. See policy reports");
-//		System.out.println("10. Make Policies Discountinued");
+		System.out.println("4. Add Criminal");
+		System.out.println("5. Update Criminal Details");
+		System.out.println("6. Assign criminals to crime");
+		System.out.println("7. Remove criminal From Crime");
+		System.out.println("8. Delete Crime By id");
+		System.out.println("9. Delete Criminal By id");
 		System.out.println("0. Logout");
 	}
 	
@@ -38,25 +37,22 @@ public class App
     				AdminUI.updateCrimeDetails(sc);
     				break;
     			case 4:
-    				//AdminUI.addPlan(sc);
+    				AdminUI.addCriminal(sc);
     				break;
     			case 5:
-    				//AdminUI.viewPlan();
+    				AdminUI.updateCriminalDetails(sc);
     				break;
     			case 6:
-    				//AdminUI.updatePlan(sc);
+    				AdminUI.AssignCriminalToCrime(sc);
     				break;
     			case 7:
-    				//AdminUI.updatePremiumAndSurcharge(sc);
+    				AdminUI.removeCriminalFromCrime(sc);
     				break;
     			case 8:
-    				//AdminUI.viewAllCustomers();
+    				AdminUI.deleteCrimeById(sc);
     				break;
     			case 9:
-    				//AdminUI.viewPolicyReport();
-    				break;
-    			case 10:
-    				//AdminUI.makePoliciesDiscontinued();
+    				AdminUI.deleteCriminalById(sc);
     				break;
     			case 0:
     				System.out.println("Bye Bye Admin");

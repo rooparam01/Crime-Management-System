@@ -6,6 +6,7 @@ import org.hibernate.annotations.Generated;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,8 +24,11 @@ private String areaName;
 @JoinColumn(name = "ps_id")
 private PoliceStation policeS;
 
-@OneToMany(mappedBy = "psArea",cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "psArea",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 private Set<Crime> crimes;
+
+@OneToMany(mappedBy = "arrestedFromPsArea",cascade = CascadeType.ALL)
+private Set<Criminal> criminal;
 
 public PsArea() {
 	super();
@@ -37,6 +41,8 @@ public PsArea(String areaName, PoliceStation policeS, Set<Crime> crimes) {
 	this.policeS = policeS;
 	this.crimes = crimes;
 }
+
+
 
 public int getId() {
 	return id;
@@ -70,45 +76,15 @@ public void setCrimes(Set<Crime> crimes) {
 	this.crimes = crimes;
 }
 
-@Override
-public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((areaName == null) ? 0 : areaName.hashCode());
-	result = prime * result + ((crimes == null) ? 0 : crimes.hashCode());
-	result = prime * result + id;
-	result = prime * result + ((policeS == null) ? 0 : policeS.hashCode());
-	return result;
+public Set<Criminal> getCriminal() {
+	return criminal;
 }
 
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	PsArea other = (PsArea) obj;
-	if (areaName == null) {
-		if (other.areaName != null)
-			return false;
-	} else if (!areaName.equals(other.areaName))
-		return false;
-	if (crimes == null) {
-		if (other.crimes != null)
-			return false;
-	} else if (!crimes.equals(other.crimes))
-		return false;
-	if (id != other.id)
-		return false;
-	if (policeS == null) {
-		if (other.policeS != null)
-			return false;
-	} else if (!policeS.equals(other.policeS))
-		return false;
-	return true;
+public void setCriminal(Set<Criminal> criminal) {
+	this.criminal = criminal;
 }
+
+
 
 @Override
 public String toString() {
