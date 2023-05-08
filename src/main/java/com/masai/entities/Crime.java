@@ -10,6 +10,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +31,7 @@ private Date date;
 
 private String nameOfVictim;
 
-@ManyToMany(cascade = CascadeType.ALL)
+@ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 @JoinTable(name = "criminal_crime",joinColumns = {@JoinColumn(referencedColumnName = "crimeId")},inverseJoinColumns = {@JoinColumn(referencedColumnName = "criminalId")})
 private Set<Criminal> criminals;
 
@@ -109,19 +110,7 @@ public void setPsarea(PsArea psarea) {
 	this.psArea = psarea;
 }
 
-@Override
-public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + crimeId;
-	result = prime * result + ((criminals == null) ? 0 : criminals.hashCode());
-	result = prime * result + ((date == null) ? 0 : date.hashCode());
-	result = prime * result + ((description == null) ? 0 : description.hashCode());
-	result = prime * result + ((nameOfVictim == null) ? 0 : nameOfVictim.hashCode());
-	result = prime * result + ((psArea == null) ? 0 : psArea.hashCode());
-	result = prime * result + ((type == null) ? 0 : type.hashCode());
-	return result;
-}
+
 
 @Override
 public boolean equals(Object obj) {
@@ -167,11 +156,11 @@ public boolean equals(Object obj) {
 	return true;
 }
 
-@Override
-public String toString() {
-	return "Crime [crimeId=" + crimeId + ", type=" + type + ", description=" + description + ", date=" + date
-			+ ", nameOfVictim=" + nameOfVictim + ", criminals=" + criminals + ", psarea=" + psArea + "]";
-}
+//@Override
+//public String toString() {
+//	return "Crime [crimeId=" + crimeId + ", type=" + type + ", description=" + description + ", date=" + date
+//			+ ", nameOfVictim=" + nameOfVictim + ", criminals=" + criminals + ", psarea=" + psArea + "]";
+//}
 
 
 

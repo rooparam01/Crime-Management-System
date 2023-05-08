@@ -1,9 +1,11 @@
 package com.masai.entities;
 
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,7 +20,7 @@ private String name;
 private String address;
 private int pinCode;
 
-@OneToMany(mappedBy = "policeS",cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "policeS",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 private Set<PsArea> psArea;
 
 public PoliceStation() {
@@ -62,17 +64,10 @@ public Set<PsArea> getPsArea() {
 public void setPsArea(Set<PsArea> psArea) {
 	this.psArea = psArea;
 }
-@Override
-public int hashCode() {
-	final int prime = 31;
-	int result = 1;
-	result = prime * result + ((address == null) ? 0 : address.hashCode());
-	result = prime * result + id;
-	result = prime * result + ((name == null) ? 0 : name.hashCode());
-	result = prime * result + pinCode;
-	result = prime * result + ((psArea == null) ? 0 : psArea.hashCode());
-	return result;
-}
+
+
+
+
 @Override
 public boolean equals(Object obj) {
 	if (this == obj)
@@ -82,26 +77,8 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	PoliceStation other = (PoliceStation) obj;
-	if (address == null) {
-		if (other.address != null)
-			return false;
-	} else if (!address.equals(other.address))
-		return false;
-	if (id != other.id)
-		return false;
-	if (name == null) {
-		if (other.name != null)
-			return false;
-	} else if (!name.equals(other.name))
-		return false;
-	if (pinCode != other.pinCode)
-		return false;
-	if (psArea == null) {
-		if (other.psArea != null)
-			return false;
-	} else if (!psArea.equals(other.psArea))
-		return false;
-	return true;
+	return Objects.equals(address, other.address) && id == other.id && Objects.equals(name, other.name)
+			&& pinCode == other.pinCode && Objects.equals(psArea, other.psArea);
 }
 @Override
 public String toString() {

@@ -1,10 +1,13 @@
 package com.masai.service;
 
 import java.sql.Date;
+import java.util.List;
 
 import com.masai.dao.CrimeDao;
 import com.masai.dao.CrimeDaoImpl;
 import com.masai.entities.Crime;
+import com.masai.entities.Criminal;
+import com.masai.exception.RecordNotFoundException;
 import com.masai.exception.SomethingWentWrongException;
 
 public class CrimeServiceImpl implements CrimeService {
@@ -12,6 +15,11 @@ public class CrimeServiceImpl implements CrimeService {
 	public void addCrime(Crime crime) throws SomethingWentWrongException {
 		CrimeDao cd = new CrimeDaoImpl();
 		cd.addCrime(crime);	
+	}
+	
+	public List<Crime> getAllCrime() throws SomethingWentWrongException  {
+		CrimeDao cd = new CrimeDaoImpl();
+		return cd.getAllCrime();	
 	}
 
 	@Override
@@ -47,6 +55,33 @@ public class CrimeServiceImpl implements CrimeService {
 		CrimeDao cd = new CrimeDaoImpl();
 		cd.updateCrimeVictim(id, victim);
 		
+	}
+
+	@Override
+	public void assingCriminal(int crimeid, Criminal criminal) throws SomethingWentWrongException, RecordNotFoundException {
+		CrimeDao cd = new CrimeDaoImpl();
+		cd.assignCriminal(crimeid, criminal);
+		
+	}
+
+	@Override
+	public void removeCriminalFromCrime(Crime crime, Criminal criminal) throws RecordNotFoundException, SomethingWentWrongException {
+		CrimeDao cd = new CrimeDaoImpl();
+		cd.removeCriminalFromCrime(crime, criminal);
+		
+	}
+
+	@Override
+	public void deleteCrimeById(int crimeid) throws SomethingWentWrongException {
+		CrimeDao cd = new CrimeDaoImpl();
+		cd.deleteCrimeById(crimeid);
+	}
+
+	@Override
+	public Crime getCrimeByDes(String des) throws SomethingWentWrongException {
+		CrimeDao cd = new CrimeDaoImpl();
+		
+		return cd.getCrimeByDes(des);
 	}
 
 
