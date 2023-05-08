@@ -86,10 +86,10 @@ public void setCriminal(Set<Criminal> criminal) {
 
 
 
-@Override
-public String toString() {
-	return "PsArea [id=" + id + ", areaName=" + areaName + ", policeS=" + policeS + ", crimes=" + crimes + "]";
-}
+//@Override
+//public String toString() {
+//	//return "PsArea [id=" + id + ", areaName=" + areaName + ", policeS=" + policeS + ", crimes=" + crimes + "]";
+//}
 
 
 

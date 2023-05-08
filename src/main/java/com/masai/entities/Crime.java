@@ -156,11 +156,11 @@ public boolean equals(Object obj) {
 	return true;
 }
 
-@Override
-public String toString() {
-	return "Crime [crimeId=" + crimeId + ", type=" + type + ", description=" + description + ", date=" + date
-			+ ", nameOfVictim=" + nameOfVictim + ", criminals=" + criminals + ", psarea=" + psArea + "]";
-}
+//@Override
+//public String toString() {
+//	return "Crime [crimeId=" + crimeId + ", type=" + type + ", description=" + description + ", date=" + date
+//			+ ", nameOfVictim=" + nameOfVictim + ", criminals=" + criminals + ", psarea=" + psArea + "]";
+//}
 
 
 

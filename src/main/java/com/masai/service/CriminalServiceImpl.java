@@ -70,4 +70,10 @@ public class CriminalServiceImpl implements CriminalService {
 		
 	}
 
+	@Override
+	public Criminal getCriminalByName(String name) throws SomethingWentWrongException {
+		CriminalDao cd = new CriminalDaoImpl();
+		return cd.getCriminalByName(name);
+	}
+
 }

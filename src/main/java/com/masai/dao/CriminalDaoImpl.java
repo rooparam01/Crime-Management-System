@@ -176,4 +176,20 @@ public class CriminalDaoImpl implements CriminalDao {
 		
 	}
 
+	@Override
+	public Criminal getCriminalByName(String name) throws SomethingWentWrongException {
+		
+		EntityManager em = EMUtils.getEntityManager();;
+		try {
+			String que = "SELECT C FROM Criminal C WHERE C.name LIKE :name ";
+			Query query = em.createQuery(que);
+			query.setParameter("name", "%"+name+"%");
+			return (Criminal) query.getSingleResult();
+		}catch(PersistenceException e) {
+			throw new SomethingWentWrongException("Unable to process your request please try again");
+		}finally {
+			em.close();
+		}
+	}
+
 }

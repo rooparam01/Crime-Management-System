@@ -27,4 +27,6 @@ public interface CrimeService {
 
 	void deleteCrimeById(int crimeid) throws SomethingWentWrongException;
 
+	Crime getCrimeByDes(String des) throws SomethingWentWrongException;
+
 }

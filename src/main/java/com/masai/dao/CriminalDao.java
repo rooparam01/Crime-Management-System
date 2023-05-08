@@ -28,4 +28,6 @@ public interface CriminalDao {
 
 	void deleteCriminalById(int criminalId) throws SomethingWentWrongException;
 
+	Criminal getCriminalByName(String name) throws SomethingWentWrongException;
+
 }

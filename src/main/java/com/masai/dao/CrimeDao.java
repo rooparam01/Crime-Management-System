@@ -30,6 +30,8 @@ public interface CrimeDao {
 
 	public void deleteCrimeById(int crimeid) throws SomethingWentWrongException;
 
+	public Crime getCrimeByDes(String des) throws SomethingWentWrongException;
+
 
 	
 }

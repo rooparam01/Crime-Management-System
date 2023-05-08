@@ -31,7 +31,7 @@ public class Criminal {
 	@JoinColumn(name = "ps_areaid")
 	private PsArea arrestedFromPsArea;
 	
-	@ManyToMany(mappedBy = "criminals")
+	@ManyToMany(mappedBy = "criminals",fetch = FetchType.EAGER)
 	private Set<Crime> crimes;
 
 	public Criminal() {

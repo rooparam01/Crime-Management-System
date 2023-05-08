@@ -18,4 +18,5 @@ void updateCriminalImark(int criminalid, String mark) throws SomethingWentWrongE
 void updateCriminalArrestDate(int criminalid, Date arrestDate) throws SomethingWentWrongException;
 void updateCriminalPsArea(int criminalid, PsArea psarea) throws SomethingWentWrongException;
 void deleteCriminalById(int criminalId) throws SomethingWentWrongException;
+Criminal getCriminalByName(String name) throws SomethingWentWrongException;
 }

@@ -77,6 +77,13 @@ public class CrimeServiceImpl implements CrimeService {
 		cd.deleteCrimeById(crimeid);
 	}
 
+	@Override
+	public Crime getCrimeByDes(String des) throws SomethingWentWrongException {
+		CrimeDao cd = new CrimeDaoImpl();
+		
+		return cd.getCrimeByDes(des);
+	}
+
 
 
 }
