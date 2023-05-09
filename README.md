@@ -3,10 +3,11 @@
 
 ## Powred By
 1. Java
-2. Exception Handling
-3. Mapping
-4. Maven
-5. Hibernet
+2. MySql
+3. Exception Handling
+4. Mapping
+5. Maven
+6. Hibernet
 
 ## Domain Description
 The Crime Management System, developed using Java, is a comprehensive solution to manage crimes, criminals, police stations, and their areas. With this system, administrators can easily add crimes, criminals, and police stations, and assign criminals to the corresponding crimes. They can also update the details of crimes and criminals. The public can access the system to view the total number of crimes that occurred in each police station area within a given date range, search for criminals by name, and search for crimes based on their descriptions.
