@@ -13,8 +13,8 @@ The Crime Management System, developed using Java, is a comprehensive solution t
 
 
 ## Roles
--Admin role
--Public role (no account required)
+1. Admin role
+2. Public role (no account required)
 
 
 ## Admin Functionality
@@ -37,7 +37,7 @@ The Crime Management System, developed using Java, is a comprehensive solution t
 4. Search for crime by description
 
 ## How to Run
-To run this application, you will need to have JDK.
--Clone this repository to your local system.
--Open terminal or command prompt
--Run the App.java
+To run this application, you will need to have JDK. <br>
+-Clone this repository to your local system.<br>
+-Open terminal or command prompt<br>
+-Run the App.java<br>
