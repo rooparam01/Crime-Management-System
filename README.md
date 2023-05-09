@@ -37,7 +37,9 @@ The Crime Management System, developed using Java, is a comprehensive solution t
 4. Search for crime by description
 
 ## How to Run
-To run this application, you will need to have JDK. <br>
+To run this application, you will need to have JDK and MySql database. <br>
+-MySql credential user: "root"  |  Pass: "root"
+-Create Database in MySql : "projectsb101"
 -Clone this repository to your local system.<br>
 -Open terminal or command prompt<br>
 -Run the App.java<br>
