@@ -45,3 +45,6 @@ To run this application, you will need to have JDK and MySql database. <br>
 -Clone this repository to your local system.<br>
 -Open terminal or command prompt<br>
 -Run the App.java<br>
+
+## ER Daigram
+![Er-daigram](https://github.com/rooparam01/Crime-Management-System/assets/111178057/5053d08f-567e-4314-a1b8-616ef6b7b2d7)
