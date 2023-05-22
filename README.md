@@ -1,6 +1,6 @@
 # Crime Management System
 <img src="https://user-images.githubusercontent.com/111178057/235991045-bcb53c7d-5f20-4cb4-8fc9-6149b8d90654.png" height="200px">
-Individual Java Project
+-A project built by indivudual in 5 days.
 
 ## Powred By
 1. Java
@@ -39,6 +39,10 @@ The Crime Management System, developed using Java, is a comprehensive solution t
 3. Search for criminal by name
 4. Search for crime by description
 
+## Data Validation
+1. If admin Login password is incorrect apropriate message - Invalid Password
+2. If Choose invalid Crime type - Invalid Crime type
+
 ## How to Run
 To run this application, you will need to have JDK and MySql database. <br>
 -MySql credential user: "root"  |  Pass: "root"<br>
@@ -46,6 +50,10 @@ To run this application, you will need to have JDK and MySql database. <br>
 -Clone this repository to your local system.<br>
 -Open terminal or command prompt<br>
 -Run the App.java<br>
+
+## Video Presentation
+![Project Presentation](https://drive.google.com/file/d/1w9qq70SC6AvZjY5FVwVM6dcMVs4l7F64/view?usp=sharing)
+
 
 ## ER Daigram
 ![Er-daigram](https://github.com/rooparam01/Crime-Management-System/assets/111178057/5053d08f-567e-4314-a1b8-616ef6b7b2d7)
