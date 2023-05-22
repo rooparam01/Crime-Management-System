@@ -52,7 +52,7 @@ To run this application, you will need to have JDK and MySql database. <br>
 -Run the App.java<br>
 
 ## Video Presentation
-![Project Presentation](https://drive.google.com/file/d/1w9qq70SC6AvZjY5FVwVM6dcMVs4l7F64/view?usp=sharing)
+[Project Presentation](https://drive.google.com/file/d/1w9qq70SC6AvZjY5FVwVM6dcMVs4l7F64/view?usp=sharing)
 
 
 ## ER Daigram
