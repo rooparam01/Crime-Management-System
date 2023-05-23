@@ -57,3 +57,8 @@ To run this application, you will need to have JDK and MySql database. <br>
 
 ## ER Daigram
 ![Er-daigram](https://github.com/rooparam01/Crime-Management-System/assets/111178057/5053d08f-567e-4314-a1b8-616ef6b7b2d7)
+
+## Flow Chart
+![flowchart](https://github.com/rooparam01/Crime-Management-System/assets/111178057/98533225-cbe8-4787-9204-ecf014de5e18)
+![flowc2](https://github.com/rooparam01/Crime-Management-System/assets/111178057/a2bd7920-9e8c-44fd-8abd-fc48fa6f6fe4)
+
